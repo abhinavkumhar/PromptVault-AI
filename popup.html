@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PromptVault AI Panel</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body class="theme-dark">
+  <div class="extension-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="logo-area">
+        <img class="logo-icon logo-img" src="icons/logo.png" alt="PromptVault AI" draggable="false">
+        <div class="brand">
+          <h1>PromptVault AI</h1>
+          <span id="platform-badge" class="platform-badge">Active</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="theme-toggle-btn" class="icon-button" title="Toggle Theme">
+          <!-- Light Mode Icon (Sun) -->
+          <svg class="sun-icon hidden" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+          <!-- Dark Mode Icon (Moon) -->
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
+        <button id="close-side-panel-btn" class="icon-button hidden" title="Close Panel">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="close-svg"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Search Section -->
+    <div class="search-belt">
+      <div class="search-input-wrapper">
+        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" id="search-bar" placeholder="Search templates, tags, or keys..." autocomplete="off">
+      </div>
+      <button id="add-prompt-btn" class="primary-button" title="Add Prompt Template">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+        Add
+      </button>
+    </div>
+
+    <!-- Category Pill Scroll Buttons -->
+    <div class="category-scroller-wrapper">
+      <div class="category-scrollbar" id="category-scroller">
+        <button class="category-pill active" data-category="ALL">All Prompts</button>
+        <button class="category-pill" data-category="FAVORITES">★ Favorites</button>
+        <button class="category-pill" data-category="Coding">Coding</button>
+        <button class="category-pill" data-category="Writing">Writing</button>
+        <button class="category-pill" data-category="Image Editing">Image Editing</button>
+        <button class="category-pill" data-category="Education">Education</button>
+      </div>
+    </div>
+
+    <!-- Main List viewport -->
+    <main class="list-viewport">
+      <div id="prompts-loading" class="empty-state hidden">Searching storage...</div>
+      <div id="prompts-list" class="prompts-list-container">
+        <!-- Dyn list populates here -->
+      </div>
+      <div id="empty-results-state" class="empty-state hidden">
+        <svg class="empty-icon" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M12 17H8"/></svg>
+        <span>No prompt templates found.</span>
+        <button id="create-first-prompt-btn" class="link-btn">Create one now</button>
+      </div>
+    </main>
+
+    <!-- Footer Controls (import / export / counters) -->
+    <footer class="app-footer">
+      <span class="prompt-count" id="prompt-count-badge">Loading prompts...</span>
+      <div class="footer-links">
+        <button id="backup-btn" class="footer-link-btn" title="Backup Prompts to JSON">
+          <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Export
+        </button>
+        <button id="restore-btn" class="footer-link-btn" title="Restore Prompts from JSON">
+          <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg> Import
+        </button>
+        <input type="file" id="file-restore-input" accept=".json" class="hidden">
+      </div>
+    </footer>
+  </div>
+
+  <!-- Form Slide-over Modal Drawer -->
+  <div id="prompt-form-overlay" class="slide-drawer-overlay hidden">
+    <div class="slide-drawer-content">
+      <header class="drawer-header">
+        <h2 id="drawer-title">Add New Prompt</h2>
+        <button id="close-drawer-btn" class="icon-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </header>
+      
+      <form id="prompt-editor-form" class="drawer-form">
+        <input type="hidden" id="edit-id-value">
+        
+        <div class="form-group">
+          <label for="prompt-title-input">Template Name</label>
+          <input type="text" id="prompt-title-input" placeholder="e.g. Remove Background Professional" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group flex-1">
+            <label for="prompt-category-input">Category</label>
+            <select id="prompt-category-input">
+              <option value="Coding">Coding</option>
+              <option value="Writing">Writing</option>
+              <option value="Image Editing">Image Editing</option>
+              <option value="Education">Education</option>
+              <option value="Marketing">Marketing</option>
+              <option value="General">General</option>
+            </select>
+          </div>
+          <div class="form-group flex-1">
+            <label for="prompt-tags-input">Tags (comma-separated)</label>
+            <input type="text" id="prompt-tags-input" placeholder="code, python, oop">
+          </div>
+        </div>
+
+        <div class="form-group flex-grow">
+          <div class="label-heading-row">
+            <label for="prompt-content-input">Prompt Template Text</label>
+            <button type="button" id="ai-optimize-btn" class="ai-pill-btn" title="Refine with Gemini AI">
+              <svg class="sparkles-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"/>
+              </svg>
+              Gemini Enhance
+            </button>
+          </div>
+          <p class="field-hint">Tip: Use double curly braces to build dynamic values (e.g. {{topic}}, {{language}})</p>
+          <textarea id="prompt-content-input" placeholder="Type prompt contents here..." required></textarea>
+        </div>
+
+        <!-- Toggle favorites list -->
+        <div class="favorite-toggle-belt">
+          <label class="custom-checkbox">
+            <input type="checkbox" id="prompt-favorite-checkbox">
+            <span class="checkbox-box"></span>
+            Add to favorites library
+          </label>
+        </div>
+
+        <div class="drawer-actions">
+          <button type="button" id="cancel-drawer-btn" class="secondary-button">Cancel</button>
+          <button type="submit" id="save-prompt-submit" class="primary-button">Save Template</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Dynamic Variables filling Modal dialog drawer -->
+  <div id="variable-filler-overlay" class="slide-drawer-overlay hidden">
+    <div class="slide-drawer-content min-height-adjust">
+      <header class="drawer-header">
+        <h2>Enter Custom Variables</h2>
+        <button id="close-filler-btn" class="icon-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </header>
+      
+      <p class="modal-info">Please configure instructions for the template variables below:</p>
+      
+      <form id="variable-form" class="drawer-form pb-4">
+        <!-- Dynamic input items generated in javascript based on matches -->
+        <div id="variable-inputs-container"></div>
+        
+        <div class="drawer-actions">
+          <button type="button" id="cancel-filler-btn" class="secondary-button">Cancel</button>
+          <button type="submit" class="primary-button fill-action-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v2"/><path d="m11.5 7.5-1.3-1.3"/><path d="m8.5 7.5 1.3-1.3"/><circle cx="10" cy="11" r="5"/><path d="M10 14V8"/></svg>
+            Paste into Chat
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div id="delete-confirm-overlay" class="delete-modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="delete-modal-title">
+    <div class="delete-modal-card" id="delete-modal-card">
+      <!-- Danger Icon -->
+      <div class="delete-modal-icon-wrap">
+        <svg class="delete-modal-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
+          <path d="M12 9v4"/>
+          <path d="M12 17h.01"/>
+        </svg>
+      </div>
+      <!-- Text -->
+      <h3 class="delete-modal-title" id="delete-modal-title">Delete Prompt?</h3>
+      <p class="delete-modal-body">
+        Are you sure you want to delete
+        <span id="delete-modal-prompt-name" class="delete-modal-name"></span>?
+        <br><span class="delete-modal-warning">This action cannot be undone.</span>
+      </p>
+      <!-- Actions -->
+      <div class="delete-modal-actions">
+        <button id="delete-modal-cancel-btn" class="secondary-button delete-modal-cancel">Cancel</button>
+        <button id="delete-modal-confirm-btn" class="delete-modal-confirm-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Unified Javascript File loaded -->
+  <script src="popup.js"></script>
+</body>
+</html>

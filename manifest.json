@@ -1,0 +1,95 @@
+{
+  "manifest_version": 3,
+  "name": "PromptVault AI",
+  "version": "1.0.0",
+  "description": "Save, organize, and instantly insert AI prompts into ChatGPT, Gemini, Claude, Grok, Perplexity, DeepSeek, and Copilot.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "contextMenus",
+    "webNavigation",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://chatgpt.com/*",
+    "https://gemini.google.com/*",
+    "https://grok.com/*",
+    "https://claude.ai/*",
+    "https://www.perplexity.ai/*",
+    "https://perplexity.ai/*",
+    "https://chat.deepseek.com/*",
+    "https://copilot.microsoft.com/*",
+    "https://*.copilot.microsoft.com/*",
+    "https://bing.com/*",
+    "https://*.bing.com/*",
+    "https://www.bing.com/*",
+    "https://m365.cloud.microsoft/*",
+    "https://copilot.cloud.microsoft/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://gemini.google.com/*",
+        "https://grok.com/*",
+        "https://claude.ai/*",
+        "https://www.perplexity.ai/*",
+        "https://perplexity.ai/*",
+        "https://chat.deepseek.com/*"
+      ],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "https://copilot.microsoft.com/*",
+        "https://copilot.microsoft.com/chats/*",
+        "https://*.copilot.microsoft.com/*",
+        "https://bing.com/chat*",
+        "https://bing.com/chat/*",
+        "https://*.bing.com/chat*",
+        "https://*.bing.com/chat/*",
+        "https://www.bing.com/chat*",
+        "https://www.bing.com/chat/*",
+        "https://bing.com/search*",
+        "https://*.bing.com/search*",
+        "https://www.bing.com/search*",
+        "https://m365.cloud.microsoft/chat*",
+        "https://m365.cloud.microsoft/chat/*"
+      ],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icons/icon128.png"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "popup.html",
+        "popup.css",
+        "popup.js",
+        "icons/logo.png",
+        "icons/icon16.png",
+        "icons/icon48.png",
+        "icons/icon128.png"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+/* PromptVault AI - Injected content script styles */
+
+/* Root FAB Button Container — fixed permanently to bottom-right.
+   All properties use !important to override any page-level CSS that might
+   attempt to reset positioning or visibility (common on Copilot / Grok). */
+.promptvault-fab {
+  position: fixed !important;
+  bottom: 24px !important;
+  right: 24px !important;
+  left: auto !important;
+  top: auto !important;
+  z-index: 2147483647 !important;
+  width: 56px !important;
+  height: 56px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, #3730a3 0%, #4f46e5 50%, #10b981 100%) !important;
+  box-shadow:
+    0 4px 20px rgba(79, 70, 229, 0.45),
+    0 2px 8px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition:
+    transform 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important,
+    box-shadow 0.22s ease !important,
+    opacity 0.22s ease !important;
+  user-select: none !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  /* Ensure the FAB itself creates its own stacking context */
+  isolation: isolate !important;
+  contain: layout style !important;
+}
+
+.promptvault-fab:hover {
+  transform: scale(1.1) translateY(-2px) !important;
+  box-shadow:
+    0 8px 28px rgba(79, 70, 229, 0.55),
+    0 4px 12px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+}
+
+.promptvault-fab:active {
+  transform: scale(0.95) !important;
+  box-shadow:
+    0 2px 10px rgba(79, 70, 229, 0.35),
+    0 1px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Slide off-screen when the sidebar is open */
+.promptvault-fab.panel-open {
+  transform: translateX(100px) scale(0.8) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Logo image inside FAB */
+.promptvault-fab-logo {
+  width: 36px !important;
+  height: 36px !important;
+  object-fit: contain !important;
+  border-radius: 6px !important;
+  pointer-events: none !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+/* The slide-in panel iframe container */
+.promptvault-panel-iframe {
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  width: 400px !important;
+  height: 100vh !important;
+  /* One below FAB so FAB can still be clicked to close */
+  z-index: 2147483646 !important;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: -8px 0 40px rgba(0, 0, 0, 0.2) !important;
+  transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transform: translateX(100%) !important;
+}
+
+.promptvault-panel-iframe.open {
+  transform: translateX(0) !important;
+}
+
+/* Backdrop overlay to close sidebar on empty clicks */
+.promptvault-backdrop {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 2147483645 !important;
+  background-color: rgba(15, 23, 42, 0.35) !important;
+  backdrop-filter: blur(3px) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.3s ease !important;
+}
+
+.promptvault-backdrop.open {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
