@@ -3,7 +3,6 @@
 > **Save, organize, search, and instantly insert reusable AI prompts across your favorite AI platforms.**
 
 ![Version](https://img.shields.io/badge/version-v1.0.0-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
 ![Manifest](https://img.shields.io/badge/Manifest-V3-orange)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow)
 ![Issues](https://img.shields.io/github/issues/abhinavkumhar/PromptVault-AI)
