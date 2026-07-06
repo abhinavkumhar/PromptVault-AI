@@ -1,81 +1,267 @@
-# PromptVault AI Browser Extension 🔒🚀
+# PromptVault AI
 
-PromptVault AI is a high-performance, developer-grade Manifest V3 browser extension designed to save, organize, and instantly paste advanced, structured prompt templates into popular AI chat platforms. 
+> **Save, organize, search, and instantly insert reusable AI prompts across your favorite AI platforms.**
 
-## Supported AI Platforms
-
-Our injected active script features target query selectors ready for:
-* **ChatGPT** (`https://chatgpt.com/*`)
-* **Gemini** (`https://gemini.google.com/*`)
-* **Claude** (`https://claude.ai/*`)
-* **Grok** (`https://grok.com/*`)
-* **DeepSeek** (`https://chat.deepseek.com/*`)
-* **Perplexity** (`https://www.perplexity.ai/*`)
-* **Microsoft Copilot** (`https://copilot.microsoft.com/*`)
+![Version](https://img.shields.io/badge/version-v1.0.0-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Manifest](https://img.shields.io/badge/Manifest-V3-orange)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow)
+![Issues](https://img.shields.io/github/issues/USERNAME/PromptVault-AI)
+![Stars](https://img.shields.io/github/stars/USERNAME/PromptVault-AI)
 
 ---
 
-## 📂 Extension Folder Structure
+# 🚀 Overview
 
-Your exported `/extension/` directory conforms perfectly to industry-level standards:
+PromptVault AI is an open-source browser extension that lets users save, organize, search, and instantly reuse AI prompts without leaving supported AI websites.
 
-* `manifest.json`: Unified configurations, keyboard shortcuts, and granular script matches.
-* `background.js`: Event service-worker listening for hotkeys and right-click context menu bindings.
-* `content.js` + `content.css`: Content injection modules, providing coordinate memory on the draggable FAB button, backdrop blur shields, and custom synthetic React paste event dispatches.
-* `popup.html` + `popup.js` + `popup.css`: Dual-purpose visual core, rendering as the toolbar popover list and sliding sideframe panel via embedded iframe.
+Instead of maintaining prompt documents or notes, PromptVault AI keeps your favorite prompts one click away.
 
----
+## ✨ Features
 
-## 🛠️ Step-by-Step Installation Instructions
+- Save prompts
+- Organize into folders/categories
+- Tags
+- Instant search
+- One-click insertion
+- Floating action button on supported AI sites
+- Edit/Delete prompts
+- Lightweight UI
+- Local storage
+- Fast workflow
 
-To load, run, and modify this extension locally in your web browser:
+## 🌐 Supported AI Platforms
 
-1. **Download the Extension Files**
-   * Grab the files inside the `/extension/` subdirectory from this workspace (manifest, background, content, popup). Keep them in a single folder named `PromptVault-AI`.
+- ChatGPT
+- Google Gemini
+- Microsoft Copilot
+- Grok
+- More coming soon
 
-2. **Open Extensions Page in your Chromium Browser**
-   * Navigate to: `chrome://extensions/` (or `edge://extensions/` for Microsoft Edge, `brave://extensions/` for Brave).
+## 🎯 Use Cases
 
-3. **Toggle Developer Mode Toggle**
-   * Turn on **Developer Mode** by clicking the toggle switch in the top-right corner of the Extensions dashboard page.
+| User | Benefits |
+|------|----------|
+| Students | Save study prompts |
+| Developers | Store debugging prompts |
+| Programmers | Reuse coding prompts |
+| Prompt Engineers | Manage prompt libraries |
+| Researchers | Organize research prompts |
+| Writers | Save writing workflows |
+| Bloggers | Generate articles faster |
+| Marketers | Reuse campaign prompts |
+| Designers | Store design prompts |
+| Content Creators | Faster content creation |
+| Business Professionals | Meeting & email prompts |
+| Everyone | Never rewrite prompts again |
 
-4. **Load Unpacked Extension**
-   * Click the **Load unpacked** button located in the top-left area.
-   * Select your prepared `PromptVault-AI` folder in your operating system's file browser.
+## 🛠 Tech Stack
 
-5. **Start Prompting!**
-   * Visit any support site (e.g., [https://chatgpt.com](https://chatgpt.com) or [https://claude.ai](https://claude.ai)).
-   * You'll instantly see the glowing **PromptVault FAB Lock icon** floating in the bottom-right!
-   * Drag it anywhere you like. Click it to slide in your prompt library side drawer, select a template, and witness instant input pasting with complete React state synchronization!
+- HTML
+- CSS
+- JavaScript
+- Chrome Extension APIs
+- Manifest V3
+- Local Storage API
 
----
+# 📥 Installation
 
-## 🎹 Keyboard Shortcuts
+## Install from Store
 
-We have configured fast, intuitive keyboard shortcuts inside `manifest.json` for rapid navigation:
+- Chrome Web Store *(Coming Soon)*
+- Microsoft Edge Add-ons *(Coming Soon)*
 
-* **Ctrl+Shift+P** (Mac: **Control+Shift+P**): Open standard toolbar Prompt Library popover.
-* **Ctrl+Shift+Y** (Mac: **Control+Shift+Y**): Slide open/close the embedded Side Panel directly inside your active AI chat page!
+## Manual Installation
 
----
+1. Clone repository
 
-## 🖼️ Suggested Extension Icons
+```bash
+git clone https://github.com/USERNAME/PromptVault-AI.git
+```
 
-To make this extension ready for the Chrome Web Store, add beautiful icons in an `icons/` folder inside the extension directory:
+2. Open browser Extensions page.
+3. Enable Developer Mode.
+4. Click **Load unpacked**.
+5. Select project folder.
+6. Start using PromptVault AI.
 
-1. `icons/icon16.png` - Used as the favicon on the extensions management page.
-2. `icons/icon48.png` - Shown on the extensions toolbar popover list.
-3. `icons/icon128.png` - Primary store launcher icon shown in the Chrome Web Store.
+# 📂 Project Structure
 
----
+```text
+PromptVault-AI/
+├── manifest.json
+├── popup/
+├── content/
+├── background/
+├── assets/
+├── scripts/
+├── styles/
+├── images/
+├── icons/
+└── README.md
+```
 
-## 🚀 Key Architectural Advantages & Scalability
+# ⚙️ How It Works
 
-1. **Unified Frame Architecture (Popup + Sidebar)**
-   * Most browser extensions maintain separate code for popups and injected side panels. PromptVault AI solves this elegantly by routing both to `popup.html` with an `embed=true` URL query parameter, avoiding duplication!
+1. Open ChatGPT, Gemini, Copilot or Grok.
+2. Floating PromptVault button appears.
+3. Open PromptVault.
+4. Search or browse prompts.
+5. Click Insert.
+6. Prompt is pasted into the chat box.
 
-2. **Framework state sync**
-   * Modern SPAs (ChatGPT, Gemini, etc.) use virtual DOM frameworks (React, ProseMirror) that ignore standard input `.value = newValue` changes. Our `content.js` dispatches custom synthetic events (`input`, `change`, `keydown`) so the target platforms immediately adapt to changes.
+# 📸 Screenshots
 
-3. **Granular Local State Persistence**
-   * Integrates seamlessly with `chrome.storage.local` to carry over your stored prompts, favorites, categories, theme preferences, and dragging coordinates across all session cycles.
+```text
+images/
+├── home.png
+├── library.png
+├── folders.png
+├── search.png
+├── insert.png
+```
+
+# 🗺 Roadmap
+
+- [ ] More AI website support
+- [ ] Prompt import/export
+- [ ] Cloud sync
+- [ ] Collections
+- [ ] Keyboard shortcuts
+- [ ] Better dark mode
+- [ ] Backup & Restore
+- [ ] Prompt sharing
+- [ ] AI prompt templates
+- [ ] Multi-language support
+
+# 👨‍💻 Development
+
+## Run
+
+```bash
+git clone https://github.com/USERNAME/PromptVault-AI.git
+```
+
+Load as an unpacked extension.
+
+## Coding Standards
+
+- ES6+
+- Modular JavaScript
+- Meaningful variable names
+- Consistent formatting
+
+## Branches
+
+- feature/*
+- fix/*
+- docs/*
+- refactor/*
+
+## Commit Convention
+
+- feat:
+- fix:
+- docs:
+- refactor:
+- chore:
+
+# 🐞 Issues & Support
+
+Please include:
+
+- Browser version
+- Extension version
+- Steps to reproduce
+- Expected behavior
+- Actual behavior
+- Screenshots (if possible)
+
+Feature requests and discussions are welcome.
+
+# 🔒 Privacy Policy
+
+- No personal information is collected.
+- Prompts are never uploaded to external servers.
+- Data is stored locally.
+- No analytics.
+- No tracking.
+- No selling of user data.
+- Only required browser permissions are requested.
+- Future cloud sync will require explicit user consent.
+
+# 🔑 Permissions
+
+| Permission | Purpose |
+|------------|---------|
+| storage | Save prompts locally |
+| activeTab | Detect supported AI pages |
+| scripting | Insert prompts |
+| host_permissions | Enable supported websites |
+
+# 🛡 Security
+
+- Local storage only
+- Minimal permissions
+- No remote code execution
+- Safe browser extension practices
+
+# ❓ FAQ
+
+<details>
+<summary>Does PromptVault AI collect my prompts?</summary>
+
+No.
+</details>
+
+<details>
+<summary>Is internet required?</summary>
+
+Only for the AI websites.
+</details>
+
+<details>
+<summary>Can I backup prompts?</summary>
+
+Planned in a future update.
+</details>
+
+<details>
+<summary>Which AI websites are supported?</summary>
+
+ChatGPT, Gemini, Microsoft Copilot and Grok.
+</details>
+
+<details>
+<summary>Is it free?</summary>
+
+Yes.
+</details>
+
+<details>
+<summary>Is it open source?</summary>
+
+Yes.
+</details>
+
+# 🤝 Contributing
+
+1. Fork
+2. Create a feature branch
+3. Commit changes
+4. Open a Pull Request
+
+# 📄 License
+
+MIT License *(or replace with your preferred license).*
+
+# 👤 Author
+
+- Name: Your Name
+- GitHub: https://github.com/USERNAME
+- Website: https://yourwebsite.com
+- Portfolio: https://portfolio.com
+
+# ❤️ Acknowledgements
+
+Thanks to everyone who uses, contributes to, and supports PromptVault AI and the open-source community.
