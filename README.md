@@ -6,8 +6,8 @@
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Manifest](https://img.shields.io/badge/Manifest-V3-orange)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow)
-![Issues](https://img.shields.io/github/issues/USERNAME/PromptVault-AI)
-![Stars](https://img.shields.io/github/stars/USERNAME/PromptVault-AI)
+![Issues](https://img.shields.io/github/issues/abhinavkumhar/PromptVault-AI)
+![Stars](https://img.shields.io/github/stars/abhinavkumhar/PromptVault-AI)
 
 ---
 
@@ -64,27 +64,6 @@ Instead of maintaining prompt documents or notes, PromptVault AI keeps your favo
 - Manifest V3
 - Local Storage API
 
-# 📥 Installation
-
-## Install from Store
-
-- Chrome Web Store *(Coming Soon)*
-- Microsoft Edge Add-ons *(Coming Soon)*
-
-## Manual Installation
-
-1. Clone repository
-
-```bash
-git clone https://github.com/USERNAME/PromptVault-AI.git
-```
-
-2. Open browser Extensions page.
-3. Enable Developer Mode.
-4. Click **Load unpacked**.
-5. Select project folder.
-6. Start using PromptVault AI.
-
 # 📂 Project Structure
 
 ```text
@@ -134,38 +113,6 @@ images/
 - [ ] AI prompt templates
 - [ ] Multi-language support
 
-# 👨‍💻 Development
-
-## Run
-
-```bash
-git clone https://github.com/USERNAME/PromptVault-AI.git
-```
-
-Load as an unpacked extension.
-
-## Coding Standards
-
-- ES6+
-- Modular JavaScript
-- Meaningful variable names
-- Consistent formatting
-
-## Branches
-
-- feature/*
-- fix/*
-- docs/*
-- refactor/*
-
-## Commit Convention
-
-- feat:
-- fix:
-- docs:
-- refactor:
-- chore:
-
 # 🐞 Issues & Support
 
 Please include:
@@ -206,44 +153,6 @@ Feature requests and discussions are welcome.
 - No remote code execution
 - Safe browser extension practices
 
-# ❓ FAQ
-
-<details>
-<summary>Does PromptVault AI collect my prompts?</summary>
-
-No.
-</details>
-
-<details>
-<summary>Is internet required?</summary>
-
-Only for the AI websites.
-</details>
-
-<details>
-<summary>Can I backup prompts?</summary>
-
-Planned in a future update.
-</details>
-
-<details>
-<summary>Which AI websites are supported?</summary>
-
-ChatGPT, Gemini, Microsoft Copilot and Grok.
-</details>
-
-<details>
-<summary>Is it free?</summary>
-
-Yes.
-</details>
-
-<details>
-<summary>Is it open source?</summary>
-
-Yes.
-</details>
-
 # 🤝 Contributing
 
 1. Fork
@@ -251,16 +160,11 @@ Yes.
 3. Commit changes
 4. Open a Pull Request
 
-# 📄 License
-
-MIT License *(or replace with your preferred license).*
-
 # 👤 Author
 
-- Name: Your Name
-- GitHub: https://github.com/USERNAME
-- Website: https://yourwebsite.com
-- Portfolio: https://portfolio.com
+- Name: Abhinav Kumhar
+- GitHub: https://github.com/abhinavkumhar
+- Website: https://abhinavkumhar.github.io/
 
 # ❤️ Acknowledgements
 
